@@ -1,38 +1,86 @@
-.App {
-  text-align: center;
+* {
+  --colors-transition: .2s ease-in-out;
+  transition: background-color var(--colors-transition), color var(--colors-transition);
+  font-weight: bold;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#racket, #ball {
+  background-color: var(--foreground-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#racket {
+  height: 10px;
+  width: var(--racket-width);
+  bottom: var(--racket-bottom);
+  position: fixed;
+  left: var(--racket-left)
+}
+
+#ball {
+  border-radius: 50%;
+  height: var(--ball-size);
+  width: var(--ball-size);
+  position: fixed;
+  left: var(--ball-left);
+  top: var(--ball-top);
+}
+
+#score {
+  
+  padding: 20px;
+}
+
+#mode {
+  height: 30px;
+  width: 30px;
+  position: fixed;
+  padding: 20px;
+  right: 0;
+  top: 0;
+  background-origin: content-box;
+  background-repeat: no-repeat;
+}
+
+#mode.sun {
+  background-image: url('/public/sun-warm.svg');
+}
+
+#mode.moon {
+  background-image: url('/public/night.svg');
+}
+
+#lose-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
 }
 
-.App-link {
-  color: #61dafb;
+#lose-box > * {
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#lose-box.hidden {
+  display: none;
+}
+
+#replay-button {
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+}
+
+#replay-button:hover {
+  background-color: var(--foreground-color);
+  color: var(--background-color);
 }
